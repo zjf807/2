@@ -69,7 +69,7 @@ criterion = nn.CrossEntropyLoss()
 resnet = ResNet18().to(device)
 def main():
     optimizer = optim.Adam(resnet.parameters(), lr=0.001)
-    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=30, gamma=0.1)
+    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
     print("\nTraining ResNet...")
     for epoch in range(1, epochs + 1):
         resnet.train()
