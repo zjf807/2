@@ -3,16 +3,12 @@ import torch.nn as nn
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
-transform_train = transforms.Compose([
-    transforms.RandomCrop(32, padding=4),
-    transforms.RandomHorizontalFlip(),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))  # 归一化
-])
-transform_test = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-])
+transform_train = transforms.Compose([transforms.RandomCrop(32, padding=4),
+                                      transforms.RandomHorizontalFlip(),
+                                      transforms.ToTensor(),
+                                      transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+transform_test = transforms.Compose([transforms.ToTensor(),
+                                     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)])
 train_data = datasets.CIFAR10(root='./data', train=True, download=True, transform=transform_train)
 train_loader = DataLoader(train_data, batch_size=64, shuffle=True)
 test_data = datasets.CIFAR10(root='./data', train=False, download=True, transform=transform_test)
